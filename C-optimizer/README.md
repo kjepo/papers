@@ -6,6 +6,7 @@ I recently wrote a small C-program to do some benchmarking and
 when examining the resulting assembler code I was surprised to
 see how <tt>clang</tt> had optimized the code.
 </p>
+
 ## Fibonacci
 <p>
 You are perhaps already familiar with the famous Fibonacci sequence
@@ -51,6 +52,7 @@ Let's simplify it some more to get rid of a few intermediate variables.
 A few more steps and we can finally see what's going on.
 </p>
 <img src="fib4.png" />
+
 ## Analysis
 <p>
 So it seems that <tt>clang</tt> has unfolded
