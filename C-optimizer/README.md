@@ -25,11 +25,17 @@ Here is the C-program which prints the first 20 Fibonacci numbers:
 <img src="fib.c.png" />
 <p>
 On Mac OS with clang, I then compiled the C-code with <tt>-O3</tt> for
-maximum optimization (although <tt>-O2</tt> or <tt>-Os</tt>) do the same).
-We will now examine the generated code for the <tt>fib</tt> function.
+maximum optimization, although <tt>-O2</tt> or <tt>-Os</tt>) will generate
+the same code for <tt>fib</tt> which is the interesting function here.
 </p>
 <img src="fib-1.png" />
 <p>
 Here, <tt>r0</tt>, <tt>r8</tt>, <tt>r19</tt>, <tt>r20</tt> corresponds
 to registers in the M1 ARM processor.
+</p>
+<p>
+Let us first clear up the code to get rid of the <tt>goto</tt>-statements.
+</p>
+<img src="fib-2.png" />
+
 
