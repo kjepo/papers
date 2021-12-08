@@ -35,7 +35,7 @@ Here, <tt>r0</tt>, <tt>r8</tt>, <tt>r19</tt>, <tt>r20</tt> corresponds
 to registers in the M1 ARM processor.  Granted, this is quite a mess
 with <tt>goto</tt>-statements but we can see that the two recursive
 calls to <tt>fib</tt> have been translated into something with only
-one recursive call!  What's going on here?!
+one recursive call.  What's going on here?!
 </p>
 <p>
 Let us first clear up the code to get rid of the <tt>goto</tt>-statements.
@@ -49,8 +49,10 @@ Let's simplify it some more to get rid of a few intermediate variables.
 A few more steps and we can finally see what's going on.
 </p>
 <img src="fib-4.png" />
-
-
-
-
-
+<p>
+This is markdown with some display math
+```math
+a^b + b^2 = c^2
+```
+and some inline math, $`e^{i\pi} + 1 = 0`$.
+</p>
