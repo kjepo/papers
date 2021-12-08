@@ -39,9 +39,14 @@ Let us first clear up the code to get rid of the <tt>goto</tt>-statements.
 </p>
 <img src="fib-2.png" />
 <p>
-Let's simplify it some more and get rid of some intermediate variables.
+Let's simplify it some more to get rid of a few intermediate variables.
 </p>
 <img src="fib-3.png" />
+<p>
+A few more steps and we can finally see what's going on.
+</p>
+<img src="fib-4.png" />
+
 
 
 
