@@ -79,7 +79,7 @@ being odd or even.
 To appreciate this transformation, here is the call graph for the
 optimized code:
 </p>
-<img src="fib-clang.png" />
+<img src="fib-clang-2.png" />
 <p>
 Compare this with the original call graph earlier.
 I am seriously impressed with the <tt>clang</tt> compiler here!
