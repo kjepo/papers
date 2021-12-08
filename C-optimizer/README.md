@@ -26,6 +26,11 @@ Here is a C-program which prints the first 20 Fibonacci numbers:
 </p>
 <img src="fib.c.png" />
 <p>
+The following call graph shows what it takes to calculate 
+<tt>fib(6)</tt>:
+</p>
+<img src="fib-orig.png" />
+<p>
 On Mac OS with clang, I compiled this with <tt>-O3</tt> for
 maximum optimization, although <tt>-O2</tt> or <tt>-Os</tt> will generate
 the same code for <tt>fib</tt> which is the interesting function here.
@@ -69,6 +74,11 @@ The final value of <tt>r0</tt> (added at the <tt>return</tt>-statement)
 is either 0 or 1, depending on the initial value of <tt>r0</tt>
 being odd or even.
 </p>
+<p>
+To appreciate this transformation, here is the call graph for the
+optimized code:
+</p>
+<img src="fib-clang.png" />
 <p>
 I am seriously impressed with the <tt>clang</tt> compiler here!
 </p>
