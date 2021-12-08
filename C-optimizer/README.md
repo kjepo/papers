@@ -31,7 +31,7 @@ The following call graph shows what it takes to calculate
 </p>
 <img src="fib-orig.png" />
 <p>
-On Mac OS with clang, I compiled this with <tt>-O3</tt> for
+On Mac OS with clang, I compiled the C-program with <tt>-O3</tt> for
 maximum optimization, although <tt>-O2</tt> or <tt>-Os</tt> will generate
 the same code for <tt>fib</tt> which is the interesting function here.
 So here is the assembler code for <tt>fib</tt>,
@@ -80,6 +80,7 @@ optimized code:
 </p>
 <img src="fib-clang.png" />
 <p>
+Compare this with the original call graph earlier.
 I am seriously impressed with the <tt>clang</tt> compiler here!
 </p>
 <p>
