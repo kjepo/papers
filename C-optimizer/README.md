@@ -63,3 +63,9 @@ The final value of <tt>r0</tt> (at the <tt>return</tt>-statement)
 is either 0 or 1, depending on the initial value of <tt>r0</tt>
 being odd or even.
 </p>
+<p>
+Given that <tt>fib</tt> is not tail-recursive, i.e., after the
+recursive calls to <tt>fib(n-1)</tt> and <tt>fib(n-2)</tt>,
+<tt>fib(n)</tt> must add the values before it itself can return the
+final result.
+</p>
