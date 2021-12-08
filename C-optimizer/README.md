@@ -72,7 +72,7 @@ recursive calls to <tt>fib(n-1)</tt> and <tt>fib(n-2)</tt>,
 final result.  In other words, it would be quite difficult for the
 C-compiler to translate <tt>fib</tt> into linear code with no recursion
 but perhaps in the future, a compiler would be able to transform the
-original recursive function into something like this:
+recursive function into something like this:
 </p>
 <img src="fibseq.png" />
 <hr>
