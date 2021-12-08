@@ -14,7 +14,7 @@ You are perhaps already familiar with the famous Fibonacci sequence
 <pre>
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 </pre>
-Where each number is the sum of the previous two.
+... where each number is the sum of the previous two.
 The sequence can be defined recursively:
 <pre>
     fib(0) = 0
