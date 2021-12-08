@@ -1,5 +1,3 @@
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-
 # A look at clang and optimization techniques
 
 ## Introduction
@@ -52,9 +50,8 @@ A few more steps and we can finally see what's going on.
 </p>
 <img src="fib-4.png" />
 <p>
-This is markdown with some display math
-```math
-a^b + b^2 = c^2
-```
-and some inline math, $`e^{i\pi} + 1 = 0`$.
+<img src="https://render.githubusercontent.com/render/math?math=x_{1,2} = \frac{-b \pm \sqrt{b^2-4ac}}{2b}">
+
+
+
 </p>
