@@ -5,7 +5,6 @@
 I recently wrote a small C-program to do some benchmarking and
 when examining the resulting assembler code I was surprised to
 see how <tt>clang</tt> had optimized the code.
-Here I will report my findings.
 </p>
 <p>
 You are perhaps already familiar with the famous Fibonacci sequence
@@ -13,21 +12,23 @@ You are perhaps already familiar with the famous Fibonacci sequence
 <pre>
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 </pre>
+Where each number is the sum of the previous two.
 The sequence can be defined recursively:
 <pre>
-    FIB(0) = 0
-    FIB(1) = 1
-    FIB(n) = FIB(n-1) + FIB(n-2), for n > 2
+    fib(0) = 0
+    fib(1) = 1
+    fib(n) = fib(n-1) + fib(n-2), for n > 2
 </pre>
 <p>
-Here is the C-program which prints the first 20 Fibonacci numbers:
+Here is a C-program which prints the first 20 Fibonacci numbers:
 </p>
 <img src="fib.c.png" />
 <p>
-On Mac OS with clang, I then compiled the C-code with <tt>-O3</tt> for
+On Mac OS with clang, I compiled this with <tt>-O3</tt> for
 maximum optimization, although <tt>-O2</tt> or <tt>-Os</tt> will generate
 the same code for <tt>fib</tt> which is the interesting function here.
-So here is the assembler code, translated back to C for readibility.
+So here is the assembler code for <tt>fib</tt>,
+translated back to C to make it slightly more readable.
 </p>
 <img src="fib-1.png" />
 <p>
@@ -52,10 +53,10 @@ A few more steps and we can finally see what's going on.
 <p>
 So it seems that <tt>clang</tt> has unfolded
 <pre>
-    FIB(n) = FIB(n-1) + FIB(n-2)
-           = FIB(n-1) + FIB(n-3) + FIB(n-4)
-	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-6)
-	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-7) + FIB(n-9)
+    fib(n) = fib(n-1) + fib(n-2)
+           = fib(n-1) + fib(n-3) + fib(n-4)
+	   = fib(n-1) + fib(n-3) + fib(n-5) + fib(n-6)
+	   = fib(n-1) + fib(n-3) + fib(n-5) + fib(n-7) + fib(n-9)
 	   :
 </pre>
 <p>
@@ -75,5 +76,5 @@ original recursive function into something like this:
 </p>
 <img src="fibseq.png" />
 <hr>
-2021-12-08 Kjell Post, <tt>kjell@irstafoto.se</tt>
+2021-12-08 Kjell Post <tt>kjell@irstafoto.se</tt>
 
