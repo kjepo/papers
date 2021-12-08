@@ -22,7 +22,7 @@ The sequence can be defined recursively:
 <p>
 Here is the C-program which prints the first 20 Fibonacci numbers:
 </p>
-<img src="fib-c.png" />
+<img src="fib.c.png" />
 <p>
 On Mac OS with clang, I then compiled the C-code with <tt>-O3</tt> for
 maximum optimization (although <tt>-O2</tt> or <tt>-Os</tt>) do the same).
