@@ -69,15 +69,9 @@ Notice that <tt>fib</tt> is not tail-recursive, i.e., after the
 recursive calls to <tt>fib(n-1)</tt> and <tt>fib(n-2)</tt>,
 <tt>fib(n)</tt> must add the values before it itself can return the
 final result.  In other words, it would be quite difficult for the
-C-compiler to translate <tt>fib</tt> into linear code with no recursion.
+C-compiler to translate <tt>fib</tt> into linear code with no recursion
+but perhaps in the future, a compiler would be able to transform the
+original recursive function to something like this:
 </p>
-<pre>
-    int fib(int n) {
-      int a = 0, b = 1, i, t;
-      for (i = 0; i < n; i++) {
-        t = a; a = b; b = t + b;
-      }
-      return a;
-    }
-</pre>
+<img src="fibseq.png" />
 
