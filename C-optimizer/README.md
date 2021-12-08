@@ -4,7 +4,7 @@
 <p>
 I recently wrote a small C-program to do some benchmarking and
 when examining the resulting assembler code I was surprised to
-see how <tt>clang</tt> had optimized the code.
+see how well <tt>clang</tt> had optimized the code.
 </p>
 
 ## Fibonacci
@@ -60,7 +60,8 @@ A few more steps and we can finally see what's going on.
 
 ## Analysis
 <p>
-So it seems that <tt>clang</tt> has unfolded
+So it seems that <tt>clang</tt> has unfolded <tt>fib(n)</tt>
+all the way:
 <pre>
     fib(n) = fib(n-1) + fib(n-2)
            = fib(n-1) + fib(n-3) + fib(n-4)
