@@ -48,9 +48,18 @@ Let's simplify it some more to get rid of a few intermediate variables.
 <p>
 A few more steps and we can finally see what's going on.
 </p>
-<img src="fib-4.png" />
+<img src="fib4.png" />
 <p>
-<img src="https://render.githubusercontent.com/render/math?math=x_{1,2} = \frac{-b \pm \sqrt{b^2-4ac}}{2b}">
+So it seems that <tt>clang</tt> has unfolded
+<pre>
+    FIB(n) = FIB(n-1) + FIB(n-2)
+           = FIB(n-1) + FIB(n-3) + FIB(n-4)
+	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-6)
+	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-7) + FIB(n-9)
+	   :
+	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + ... + 
+</pre>
+
 
 
 
