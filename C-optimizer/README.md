@@ -57,10 +57,9 @@ So it seems that <tt>clang</tt> has unfolded
 	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-6)
 	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + FIB(n-7) + FIB(n-9)
 	   :
-	   = FIB(n-1) + FIB(n-3) + FIB(n-5) + ... + 
 </pre>
-
-
-
-
+<p>
+The final value of <tt>r0</tt> (at the <tt>return</tt>-statement)
+is either 0 or 1, depending on the initial value of <tt>r0</tt>
+being odd or even.
 </p>
