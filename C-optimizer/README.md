@@ -32,7 +32,10 @@ So here is the assembler code, translated back to C for readibility.
 <img src="fib-1.png" />
 <p>
 Here, <tt>r0</tt>, <tt>r8</tt>, <tt>r19</tt>, <tt>r20</tt> corresponds
-to registers in the M1 ARM processor.
+to registers in the M1 ARM processor.  Granted, this is quite a mess
+with <tt>goto</tt>-statements but we can see that the two recursive
+calls to <tt>fib</tt> have been translated into something with only
+one recursive call!  What's going on here?!
 </p>
 <p>
 Let us first clear up the code to get rid of the <tt>goto</tt>-statements.
