@@ -17,3 +17,7 @@ The sequence can be defined recursively:
     FIB(1) = 1
     FIB(n) = FIB(n-1) + FIB(n-2), for n > 2
 </pre>
+<p>
+Here is the C-program which prints the first 20 Fibonacci numbers:
+</p>
+<img src="fib-1.png" />
