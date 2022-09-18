@@ -1,0 +1,35 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{mystuff}
+\usepackage{fullpage}
+\usepackage{pdfpages}
+\usepackage[skins]{tcolorbox}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{caption}
+\captionsetup{font=footnotesize}
+\usepackage{algorithm,algpseudocode}
+
+\newcommand{\rad}[1]{%
+  \resizebox{5cm}{!}{\mpost{square.#1}}
+}
+
+\newcommand{\rads}[1]{%
+  \resizebox{3cm}{!}{\mpost{square.#1}}
+}
+
+\begin{document}
+\title{A linear time algorithm for ranking scores with ties}
+\author{Kjell Post, Irsta Fotostudio \\ {\tt kjell@irstafoto.se}}
+\date{}
+\maketitle
+
+\abstract{In competitions, it is useful to present a \emph{ranked} list
+  of winning entries and their scores, but in case of several entries with
+  the same score we must present those entries as tied.  This memo describes
+  an $O(n)$ algorithm to rank the entries so that each entry has a place
+  and a tie tag, e.g., ``5th place'' or ``Shared 3rd place''.}
+  
+\section{Introduction and definitions}
+
+\end{document}

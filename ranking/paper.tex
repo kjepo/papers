@@ -1,0 +1,133 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{mystuff}
+\usepackage{fullpage}
+\usepackage{pdfpages}
+\usepackage[skins]{tcolorbox}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{caption}
+\captionsetup{font=footnotesize}
+\usepackage{algorithm,algpseudocode}
+
+\newcommand{\rad}[1]{%
+  \resizebox{5cm}{!}{\mpost{square.#1}}
+}
+
+\newcommand{\rads}[1]{%
+  \resizebox{3cm}{!}{\mpost{square.#1}}
+}
+
+\begin{document}
+\title{A linear time algorithm for ranking scores with ties}
+\author{Kjell Post \\ Irsta Fotostudio \\ {\tt kjell@irstafoto.se}}
+\date{}
+\maketitle
+
+\abstract{In competitions, it is useful to present a list
+  of winning entries and their scores, but in case of several entries with
+  the same score we must present not only their final place, but also if their
+  place as tied.
+  This memo describes an $O(n)$ algorithm to rank the entries so that each
+  entry has a place and a tie marker, e.g., ``2nd place'' or ``Shared 1st place''.}
+  
+\section{The ranking algorithm}
+Consider a competition with a set of scores $S$, assumed sorted:
+\begin{tabbing}
+  \qquad $S = \{ 0, 0, 10, 75, 76, 76, 76, 77, 77, 77, 78, 79, 80, 80 \}$
+\end{tabbing}
+When the scores are presented, we would like to display them as follows:
+
+\begin{center}
+\begin{tabular}{l r r}
+  Shared &  13th place: &   0 \\
+  Shared &  13th place: &   0 \\
+         &  12th place: &  10 \\
+         &  11th place: &  75 \\
+  Shared &   8th place: &  76 \\
+  Shared &   8th place: &  76 \\
+  Shared &   8th place: &  76 \\
+  Shared &   5th place: &  77 \\
+  Shared &   5th place: &  77 \\
+  Shared &   5th place: &  77 \\
+         &   4th place: &  78 \\
+         &   3th place: &  79 \\
+  Shared &   1st place: &  80 \\
+  Shared &   1st place: &  80
+\end{tabular}
+\end{center}
+
+\noindent
+We assume $S$ can be viewed both as a set and as a list
+$S[0] \ldots S[N-1]$ where $N$ is the number of scores.
+The following algoritm annotates each score with
+attributes \emph{place} (denoting the score's final place)
+and \emph{tied} (a boolean, denoting if the place is tied).
+
+\begin{tabbing}
+\qquad  \textbf{procedure} \emph{rank}$(S)$: \\
+\qquad  \qquad \= $N \leftarrow \emph{length}(S)$ \\
+\qquad         \> \textbf{if} $N = 0$ \textbf{return} \\
+\qquad         \> $p \leftarrow 1$ \\
+\qquad         \> $\emph{topScore} \leftarrow \infty$ \\
+\qquad         \> \textbf{for} $k \in \{ N-1, N-2, \ldots 1, 0 \}$ \= \emph{// Visit each score in ascending order} \\
+\qquad  \qquad\qquad \= \textbf{if} $S[k] < \emph{topScore}$ \> \emph{// A new distinct score $\Rightarrow$ a new place} \\ 
+\qquad  \qquad\qquad\qquad \= $p \leftarrow N - k$ \\
+\qquad                     \> $\emph{topScore} \leftarrow S[k]$ \\
+\qquad  \qquad\qquad \= $S[k].\emph{place} \leftarrow p$ \\
+\qquad               \> $S[k].\emph{tied} \leftarrow \emph{false}$ \\
+\qquad               \> \textbf{if} $k < N-1$ \textbf{and} $S[k+1].\emph{place} = p$ \emph{// If previous score is the same, we have a tie}\\
+\qquad  \qquad\qquad\qquad \= $S[k].tied \leftarrow \emph{true}$ \\
+\qquad                     \> $S[k+1].tied \leftarrow \emph{true}$ 
+\end{tabbing}
+
+\section{Python implementation}
+\begin{verbatim}
+#!/usr/bin/env python
+
+photos = [
+     { 'score':  0 },
+     { 'score':  0 },
+     { 'score': 75 },
+     { 'score': 76 },
+     { 'score': 76 },
+     { 'score': 76 },
+     { 'score': 77 },
+     { 'score': 77 },
+     { 'score': 77 },
+     { 'score': 78 },
+     { 'score': 79 },
+     { 'score': 80 },
+     { 'score': 80 },
+     { 'score': 10 },
+]
+
+# sort photos by score
+photos.sort(lambda x,y : cmp(x['score'], y['score']))
+
+def rank(s):
+    N = len(s)
+    if N == 0:
+        return
+    p = 1
+    topScore = 999999
+    # visit s[N-1], s[N-2], ... s[1], s[0]
+    for k in range(N-1, -1, -1):
+        if s[k]['score'] < topScore:
+            p = N - k
+            topScore = s[k]['score']
+        s[k]['place'] = p
+        s[k]['tied'] = False
+        if k < N-1 and s[k+1]['place'] == p:
+            s[k]['tied'] = True
+            s[k+1]['tied'] = True
+    
+rank(photos);
+for p in photos:
+    if p['tied']:
+        print 'Shared %4s place: %3s' % (p['place'], p['score'])
+    else:
+        print '       %4s place: %3s' % (p['place'], p['score'])
+\end{verbatim}
+
+\end{document}
